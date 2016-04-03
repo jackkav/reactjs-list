@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Panel, Glyphicon, Input } from 'react-bootstrap';
-const Item = ({content}) => (
+const Item = ({ content }) => (
   <Col xs={4}>
     <Panel>
       <Row>
@@ -17,7 +17,7 @@ const Item = ({content}) => (
      </Row>
      <Row>
        <Col xs={12}>
-          <Input type="checkbox" label="Complete?"/>
+          <Input type="checkbox" label="Complete?" />
        </Col>
      </Row>
     </Panel>
