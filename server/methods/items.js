@@ -9,11 +9,12 @@ export default function () {
       const category = { name, createdAt };
       Categories.insert(category);
     },
-    'items.create'(name, description) {
+    'items.create'(name, description, due) {
       check(name, String);
       check(description, String);
+      check(due, String);
       const createdAt = new Date();
-      const item = { name, description, createdAt };
+      const item = { name, description, due, createdAt };
       Items.insert(item);
     },
     'items.markComplete'(complete, itemId) {
