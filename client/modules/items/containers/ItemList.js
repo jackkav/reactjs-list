@@ -4,7 +4,10 @@
    const { Meteor, Collections } = context();
    if (Meteor.subscribe('items.list').ready()) {
      const items = Collections.Items.find({}, { sort: { due: -1 } }).fetch();
-     onData(null, { items });
+     const totalItems = Collections.Items.find().count();
+     const completedItems = Collections.Items.find({ complete: true }).count();
+     const percentage = Math.round((completedItems / totalItems) * 100);
+     onData(null, { items, percentage });
    }
  };
  export default composeAll(
