@@ -11,9 +11,9 @@ const ItemList = ({ items, percentage }) => (
     </Row>
     <Row className="show-grid">
       <Col xs={12}>
-        <a href="/edit"><Glyphicon glyph="plus"></Glyphicon> New Item</a>
+        <a href="/edit"><Glyphicon glyph="plus" /> New Item</a>
       </Col>
-      {items.map(item => (
+      {items && items.map(item => (
        <Item key={item._id} item={item} />
        ))}
     </Row>

@@ -8,8 +8,9 @@ export default {
       if (err) {
         return LocalState.set('SAVING_ERROR', err.message);
       }
+      return true;
     });
-    FlowRouter.go('/');
+    return FlowRouter.go('/');
   },
   clearErrors({ LocalState }) {
     return LocalState.set('SAVING_ERROR', null);

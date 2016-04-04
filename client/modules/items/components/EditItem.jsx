@@ -14,7 +14,7 @@ class EditItem extends React.Component {
               defaultValue={item ? item.name : ''} />
             <Input ref="description" type="textarea" placeholder="Description"
               defaultValue={item ? item.description : ''} />
-            <DateTimeField ref="due" inputFormat="MM/DD/Y" defaultText=""/>
+            <DateTimeField ref="due" inputFormat="MM/DD/Y" defaultText="" />
             <ButtonInput onClick={this.createItem.bind(this)}
               bsStyle="primary" type="submit" value="Save Item" />
           </form>
@@ -25,7 +25,7 @@ class EditItem extends React.Component {
   createItem(e) {
     e.preventDefault();
     const { create } = this.props;
-    const {name, description, due} = this.refs;
+    const { name, description, due } = this.refs;
     create(name.getValue(), description.getValue(), due.getValue());
     name.getInputDOMNode().value = '';
     description.getInputDOMNode().value = '';

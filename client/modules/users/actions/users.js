@@ -22,7 +22,11 @@ export default {
       return LocalState.set('LOGIN_ERROR', 'Password is required.');
     }
     LocalState.set('LOGIN_ERROR', null);
-    Meteor.loginWithPassword(email, password);
-    FlowRouter.go('/');
+    Meteor.loginWithPassword(email, password, (error) => {
+      if (error) {
+        return LocalState.set('LOGIN_ERROR', 'Invalid username or password');
+      }
+      FlowRouter.go('/');
+    });
   }
 };
