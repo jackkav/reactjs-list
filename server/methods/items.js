@@ -17,14 +17,16 @@ export default function () {
       const item = { name, description, due, createdAt };
       Items.insert(item);
     },
-    'items.edit'(name, description, due) {
+    'items.edit'(id, name, description, due) {
+      check(id, String);
       check(name, String);
       check(description, String);
       check(due, String);
       const updatedAt = new Date();
       const item = { name, description, due, updatedAt };
-      Items.update({ name: item.name },
-         { $set: { description: item.description, due: item.due, updatedAt: item.updatedAt } });
+      Items.update({ _id: id },
+         { $set: { description: item.description, due: item.due,
+           updatedAt: item.updatedAt, name: item.name } });
     },
     'items.markComplete'(complete, itemId) {
       check(complete, Boolean);

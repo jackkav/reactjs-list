@@ -8,13 +8,11 @@ class EditItem extends React.Component {
     if (this.props.itemId) {
       const { edit } = this.props;
       const { name, description, due } = this.refs;
-      console.log(this.props.itemId);
-      edit(name.getValue(), description.getValue(), due.getValue());
+      edit(this.props.itemId, name.getValue(), description.getValue(), due.getValue());
     }
     else {
       const { create } = this.props;
       const { name, description, due } = this.refs;
-      console.log(this.props.itemId);
       create(name.getValue(), description.getValue(), due.getValue());
       name.getInputDOMNode().value = '';
       description.getInputDOMNode().value = '';

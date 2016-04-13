@@ -12,12 +12,12 @@ export default {
     });
     return FlowRouter.go('/');
   },
-  edit({ Meteor, LocalState, FlowRouter }, name, description, due) {
+  edit({ Meteor, LocalState, FlowRouter }, id, name, description, due) {
     if (!name) {
       return LocalState.set('CREATE_ITEM_ERROR', 'Item name is required.');
     }
     LocalState.set('CREATE_ITEM_ERROR', null);
-    Meteor.call('items.edit', name, description, due, (err) => {
+    Meteor.call('items.edit', id, name, description, due, (err) => {
       if (err) {
         return LocalState.set('SAVING_ERROR', err.message);
       }
