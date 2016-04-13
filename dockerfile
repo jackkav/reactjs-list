@@ -1,1 +1,1 @@
-FROM jshimko/meteord:base
+FROM jshimko/meteord:onbuild
