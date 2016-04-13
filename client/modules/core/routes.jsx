@@ -10,6 +10,12 @@ import NewCategory from '../items/containers/NewCategory.js';
 import NewUser from '../users/containers/NewUser.js';
 import Login from '../users/containers/Login.js';
 
+import { Accounts } from 'meteor/accounts-base';
+
+// Accounts.ui.config({
+//   passwordSignupFields: 'USERNAME_ONLY'
+// });
+
 export default function (injectDeps, { FlowRouter }) {
   const MainLayoutCtx = injectDeps(MainLayout);
   FlowRouter.route('/', {
