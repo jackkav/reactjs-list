@@ -20,6 +20,13 @@ export default function (injectDeps, { FlowRouter }) {
       });
     },
   });
+  FlowRouter.route('/delete/:itemId', {
+    name: 'items.delete',
+    action({ itemId }) {
+      Meteor.call('items.delete', itemId);
+      FlowRouter.go('/');
+    },
+  });
   FlowRouter.route('/edit/:itemId', {
     name: 'items.edit',
     action({ itemId }) {

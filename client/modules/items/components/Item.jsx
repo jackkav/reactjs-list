@@ -15,6 +15,7 @@ class Item extends React.Component {
          <h2>{item.name}</h2>
        </Col>
        <Col xs={2}>
+         <a href={`/delete/${item._id}`}><Glyphicon glyph="remove"></Glyphicon></a>
          <a href={`/edit/${item._id}`}><Glyphicon glyph="pencil"></Glyphicon></a>
        </Col>
      </Row>

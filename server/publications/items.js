@@ -7,7 +7,7 @@ export default function () {
     return Categories.find();
   });
   Meteor.publish('items.list', function () {
-    return Items.find();
+    return Items.find({}, { sort:{ yes: -1 } });
   });
   Meteor.publish('items.single', function (itemId) {
     check(itemId, String);

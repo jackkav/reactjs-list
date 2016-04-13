@@ -28,6 +28,10 @@ export default function () {
          { $set: { description: item.description, due: item.due,
            updatedAt: item.updatedAt, name: item.name } });
     },
+    'items.delete'(id) {
+      check(id, String);
+      Items.remove({ _id: id });
+    },
     'items.markComplete'(complete, itemId) {
       check(complete, Boolean);
       check(itemId, String);
