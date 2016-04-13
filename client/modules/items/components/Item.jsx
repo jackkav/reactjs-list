@@ -26,13 +26,8 @@ class Item extends React.Component {
      </Row>
       <Row>
        <Col xs={12}>
-         <p>{item.description}{item.due ? '- ' + moment(Number(item.due)).format('MM/DD/YYYY') : ''}</p>
-       </Col>
-     </Row>
-     <Row>
-       <Col xs={12}>
-          <Input ref="complete" type="checkbox"
-            label="Complete?" onChange={this.markComplete.bind(this)} />
+         <p>{item.description}</p>
+         <p>Decision date: {moment(Number(item.due)).format('MM/DD/YYYY')}</p>
        </Col>
      </Row>
      <Row>
