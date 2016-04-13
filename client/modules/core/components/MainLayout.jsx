@@ -4,7 +4,7 @@ const Layout = ({ content }) => (
   <Grid>
     <Row>
       <Col xs={12}>
-        <PageHeader>Impossible List </PageHeader>
+        <PageHeader>Vote for pedro</PageHeader>
       </Col>
 </Row>
      {content()}

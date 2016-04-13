@@ -3,11 +3,23 @@ import { Col, Panel, Input, ButtonInput, Glyphicon } from 'react-bootstrap';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
 class EditItem extends React.Component {
-  editItem(e) {
+  createItem(e) {
     e.preventDefault();
-    const { edit } = this.props;
-    const { name, description, due } = this.refs;
-    edit(name.getValue(), description.getValue(), due.getValue());
+    if (this.props.itemId) {
+      const { edit } = this.props;
+      const { name, description, due } = this.refs;
+      console.log(this.props.itemId);
+      edit(name.getValue(), description.getValue(), due.getValue());
+    }
+    else {
+      const { create } = this.props;
+      const { name, description, due } = this.refs;
+      console.log(this.props.itemId);
+      create(name.getValue(), description.getValue(), due.getValue());
+      name.getInputDOMNode().value = '';
+      description.getInputDOMNode().value = '';
+    }
+
   }
   render() {
     const { item } = this.props;
@@ -23,7 +35,7 @@ class EditItem extends React.Component {
               defaultValue={item ? item.description : ''} />
             <DateTimeField ref="due" inputFormat="MM/DD/Y"
               defaultText={item ? moment(Number(item.due)).format('MM/DD/Y') : ''} />
-            <ButtonInput onClick={this.editItem.bind(this)}
+            <ButtonInput onClick={this.createItem.bind(this)}
               bsStyle="primary" type="submit" value="Save Item" />
           </form>
         </Panel>
