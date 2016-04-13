@@ -31,5 +31,15 @@ export default function () {
       check(itemId, String);
       Items.update(itemId, { $set: { complete } });
     },
+    'items.vote'(voteType, itemId) {
+      check(voteType, String);
+      check(itemId, String);
+      if (voteType === 'yes') {
+        Items.update(itemId, { $inc: { yes: 1 } });
+      }
+      if (voteType === 'no') {
+        Items.update(itemId, { $inc: { no: 1 } });
+      }
+    },
   });
 }

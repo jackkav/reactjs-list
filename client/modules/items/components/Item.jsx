@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Row, Col, Panel, Glyphicon, Input } from 'react-bootstrap';
+import { Row, Col, Panel, Glyphicon, Input, Button } from 'react-bootstrap';
 class Item extends React.Component {
   render() {
     const { item, currentDate } = this.props;
@@ -28,6 +28,14 @@ class Item extends React.Component {
             label="Complete?" onChange={this.markComplete.bind(this)} />
        </Col>
      </Row>
+     <Row>
+       <Col xs={6}>
+          <Button ref="voteYes" type="button" onClick={this.voteYes.bind(this)}>Vote Yes</Button>
+       </Col>
+         <Col xs={6}>
+            <Button ref="voteNo" type="button" onClick={this.voteNo.bind(this)}>Vote No</Button>
+         </Col>
+     </Row>
     </Panel>
 </Col>
 );
@@ -36,6 +44,14 @@ class Item extends React.Component {
     const complete = this.refs.complete.getChecked();
     const itemId = this.props.item._id;
     Meteor.call('items.markComplete', complete, itemId);
+  }
+  voteYes() {
+    const itemId = this.props.item._id;
+    Meteor.call('items.vote', "yes", itemId);
+  }
+  voteNo() {
+    const itemId = this.props.item._id;
+    Meteor.call('items.vote', "no", itemId);
   }
 }
 export default Item;
