@@ -4,9 +4,8 @@ import { Row, Col, Panel, Glyphicon, Input, Button } from 'react-bootstrap';
 import ItemProgress from './ItemProgress.jsx';
 class Item extends React.Component {
   render() {
-    const { item, currentDate } = this.props;
-    const style = item.due < currentDate ? { 'border': 'solid 1px red' }
-                                       : { 'border': 'solid 1px #e3e3e3' };
+    const { item } = this.props;
+    const style = { 'border': 'solid 1px #e3e3e3' };
     return (
   <Col xs={4}>
      <Panel style={style}>
@@ -19,15 +18,15 @@ class Item extends React.Component {
          <a href={`/edit/${item._id}`}><Glyphicon glyph="pencil"></Glyphicon></a>
        </Col>
      </Row>
-     <Row>
-       <Col xs={12}>
-         <ItemProgress percentage={this.getPercentage(item.yes, item.no)} />
-       </Col>
-     </Row>
       <Row>
        <Col xs={12}>
          <p>{item.description}</p>
-         <p>Decision date: {moment(Number(item.due)).format('MM/DD/YYYY')}</p>
+         <p>Decision date: {moment(Number(item.due)).format('DD/MM/YYYY')}</p>
+       </Col>
+     </Row>
+     <Row>
+       <Col xs={12}>
+         <ItemProgress percentage={this.getPercentage(item.yes, item.no)} />
        </Col>
      </Row>
      <Row>
