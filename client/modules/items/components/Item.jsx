@@ -6,6 +6,8 @@ class Item extends React.Component {
   render() {
     const { item } = this.props;
     const style = { 'border': 'solid 1px #e3e3e3' };
+    const yesStyle = { 'color': 'green' };
+    const noStyle = { 'color': 'red' };
     return (
   <Col xs={4}>
      <Panel style={style}>
@@ -13,10 +15,12 @@ class Item extends React.Component {
        <Col xs={10}>
          <h2>{item.name}</h2>
        </Col>
+       {Meteor.userId()?
        <Col xs={2}>
          <a href={`/delete/${item._id}`}><Glyphicon glyph="remove"></Glyphicon></a>
          <a href={`/edit/${item._id}`}><Glyphicon glyph="pencil"></Glyphicon></a>
        </Col>
+       :''}
      </Row>
       <Row>
        <Col xs={12}>
@@ -31,10 +35,10 @@ class Item extends React.Component {
      </Row>
      <Row>
        <Col xs={6}>
-          <Button ref="voteYes" type="button" onClick={this.voteYes.bind(this)}>Vote Yes</Button>
+          <Button ref="voteYes" type="button" style={yesStyle} onClick={this.voteYes.bind(this)}>Vote Yes</Button>
        </Col>
          <Col xs={6}>
-            <Button ref="voteNo" type="button" onClick={this.voteNo.bind(this)}>Vote No</Button>
+            <Button ref="voteNo" type="button" style={noStyle} onClick={this.voteNo.bind(this)}>Vote No</Button>
          </Col>
      </Row>
     </Panel>
