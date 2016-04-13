@@ -17,15 +17,15 @@ class EditItem extends React.Component {
       name.getInputDOMNode().value = '';
       description.getInputDOMNode().value = '';
     }
-
   }
   render() {
-    const { item } = this.props;
+    const { item, error } = this.props;
     return (
       <Col xs={12} sm={6} smOffset={3}>
         <Panel>
           <a href="/"><Glyphicon glyph="chevron-left"></Glyphicon> Back to Items</a>
           <h1>{item ? 'Edit' : 'Add'} Item</h1>
+          {error ? <p style={{ color: 'red' }}>{error}</p> : null}
           <form>
             <Input ref="name" type="text" placeholder="Name"
               defaultValue={item ? item.name : ''} />
