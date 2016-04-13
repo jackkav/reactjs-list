@@ -32,7 +32,7 @@ class EditItem extends React.Component {
             <Input ref="description" type="textarea" placeholder="Description"
               defaultValue={item ? item.description : ''} />
             <DateTimeField ref="due" inputFormat="DD/MM/YYYY"
-              defaultText={item ? moment(Number(item.due)).format('DD/MM/YYYY') : ''} />
+              defaultText={item ? moment(Number(item.due)).format('DD/MM/YYYY') : moment().format('DD/MM/YYYY')} />
             <ButtonInput onClick={this.createItem.bind(this)}
               bsStyle="primary" type="submit" value="Save Item" />
           </form>

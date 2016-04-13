@@ -4,9 +4,9 @@ const Layout = ({ content }) => (
   <Grid>
     <Row>
       <Col xs={12}>
-        <PageHeader>Vote for pedro</PageHeader>
+        <PageHeader>{Meteor.userId()?'Welcome '+Meteor.user().username+ ' what you waiting for vote for something' :'Vote for pedro'} </PageHeader>
       </Col>
-</Row>
+    </Row>
      {content()}
 </Grid>
 );
